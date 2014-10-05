@@ -12,7 +12,7 @@ How to Contribute to this Overlay
 :language: English
 
 Contributing to this overlay by adding new ebuilds wouldn't make any sense since
-this is _my_ overlay. :P However feel free to submit bug fixes / improvements.
+this is *my* overlay. :P However feel free to submit bug fixes / improvements.
 
 Greetings GitHub Users!
 =======================
