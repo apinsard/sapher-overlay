@@ -3,6 +3,31 @@ Sapher Overlay
 
 This overlay contains ebuilds for miscellaneous software I created.
 
+To use this overlay add it to layman
+
+.. code::
+
+  emerge layman
+  cat > /etc/layman/overlays/saher.xml <<EOF
+  <?xml version="1.0" ?>
+
+  <repositories version="1.0">
+    <repo priority="50" quality="experimental" status="unoffical">
+      <name>sapher</name>
+      <description>Miscellaneous tools written by pytony</description>
+      <homepage>http://github.com/apinsard/sapher-overlay</homepage>
+      <owner>
+        <email>antoine.pinsard@gmail.com</email>
+        <name>Antoine PInsard</name>
+      </owner>
+      <source type="git">git://github.com/apinsard/sapher-overlay.git</source>
+    </repo>
+  </repositories>
+  EOF
+  layman -f
+  layman -a sapher
+
+
 =================================
 How to Contribute to this Overlay
 =================================
