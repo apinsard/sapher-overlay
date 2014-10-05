@@ -14,7 +14,7 @@ Installation through layman
 
   emerge -a layman
   echo "source /var/lib/layman/make.conf" >> /etc/portage/make.conf
-  cat > /etc/layman/overlays/saher.xml <<EOF
+  cat > /etc/layman/overlays/sapher.xml <<EOF
   <?xml version="1.0" ?>
 
   <repositories version="1.0">
