@@ -1,9 +1,14 @@
 Sapher Overlay
-================
+==============
 
 This overlay contains ebuilds for miscellaneous software I created.
 
-To use this overlay add it to layman
+To use this overlay, the best way is to add it to layman. If you don't know
+layman, installation steps are described below.
+
+===========================
+Installation through layman
+===========================
 
 .. code::
 
