@@ -7,7 +7,8 @@ To use this overlay add it to layman
 
 .. code::
 
-  emerge layman
+  emerge -a layman
+  echo "source /var/lib/layman/make.conf" >> /etc/portage/make.conf
   cat > /etc/layman/overlays/saher.xml <<EOF
   <?xml version="1.0" ?>
 
