@@ -2,9 +2,9 @@
 
 EAPI="4-python"
 
-#PYTHON_MULTIPLE_ABIS="1"
-#PYTHON_RESTRICTED_ABIS="?"
-#inherit mulilib python
+PYTHON_MULTIPLE_ABIS="1"
+PYTHON_RESTRICTED_ABIS="2.*"
+inherit mulilib python
 
 DESCRIPTION="Simple tool to manage your package.use keeping track and comments on changes made."
 HOMEPAGE="https://github.com/apinsard/chuse"
