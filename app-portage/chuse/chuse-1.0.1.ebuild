@@ -29,6 +29,8 @@ src_unpack() {
 src_install() {
 	into /usr/
 	dosbin chuse
+	doman man/man1/chuse.1
+	dodoc ChangeLog README.md
 }
 
 src_compile() {
