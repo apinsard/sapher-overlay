@@ -41,3 +41,9 @@ src_install() {
 pkg_info() {
 	"${ROOT}"/usr/sbin/chuse --version
 }
+
+pkg_postinst() {
+	elog "If this is the first time you install chuse, you may have to setup"
+	elog "your package.use hierarchy pattern. For details, please see the"
+	elog "EXAMPLES section of chuse(1) manual page."
+}
