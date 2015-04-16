@@ -35,9 +35,9 @@ src_install() {
 	into /usr/
 	dosbin chuse
 	doman man/man1/chuse.1
-	dodoc ChangeLog README.md
+	dodoc ChangeLog
 }
 
-src_compile() {
-	return
+pkg_info() {
+	"${ROOT}"/usr/sbin/chuse --version
 }
