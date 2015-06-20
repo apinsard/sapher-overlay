@@ -4,7 +4,9 @@ Sapher Overlay
 This overlay contains:
 
 - ebuilds for miscellaneous software I created
+   - `chuse <https://github.com/apinsard/sapher-overlay/tree/master/app-portage/chuse>`_
 - ebuilds I maintain for Funtoo
+   - `qtile <https://github.com/apinsard/sapher-overlay/tree/master/x11-wm/qtile>`_
 
 To use this overlay, the best way is to add it to layman. If you don't know
 layman, installation steps are described below.
