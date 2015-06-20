@@ -1,7 +1,10 @@
 Sapher Overlay
 ==============
 
-This overlay contains ebuilds for miscellaneous software I created.
+This overlay contains:
+
+- ebuilds for miscellaneous software I created
+- ebuilds I maintain for Funtoo
 
 To use this overlay, the best way is to add it to layman. If you don't know
 layman, installation steps are described below.
@@ -20,11 +23,11 @@ Installation through layman
   <repositories version="1.0">
     <repo priority="50" quality="experimental" status="unoffical">
       <name>sapher</name>
-      <description>Miscellaneous tools written by pytony</description>
+      <description>Pytony's Sapher overlay</description>
       <homepage>http://github.com/apinsard/sapher-overlay</homepage>
       <owner>
         <email>antoine.pinsard@gmail.com</email>
-        <name>Antoine PInsard</name>
+        <name>Antoine Pinsard</name>
       </owner>
       <source type="git">git://github.com/apinsard/sapher-overlay.git</source>
     </repo>
