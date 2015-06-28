@@ -9,6 +9,7 @@ inherit distutils git-2
 
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/qtile/qtile.git"
+EGIT_BRANCH="develop"
 KEYWORDS=""
 
 DESCRIPTION="A pure-Python tiling window manager."
@@ -25,8 +26,9 @@ REQUIRED_USE="widget-mpris? ( dbus )
 "
 
 RDEPEND="x11-libs/cairo[xcb] x11-libs/pango
-	>=dev-python/xcffib-0.1.11
-	>=dev-python/cairocffi-0.6
+	>=dev-python/xcffib-0.3.0
+	>=dev-python/cairocffi-0.7
+	>=dev-python/cffi-1.0
 	python_abis_3.3? ( dev-python/asyncio )
 	python_abis_2.7? ( dev-python/trollius[python_targets_python2_7] )
 	$(python_abi_depend ">=dev-python/six-1.4.1" )
