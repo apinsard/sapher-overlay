@@ -94,7 +94,7 @@ src_prepare() {
 	fi
 	if ! use widget-keyboardkbdd ; then
 		(
-			sed -i '/safe_import(".keyboarkbdd", "KeyboardKbdd")/d' libqtile/widget/__init__.py
+			sed -i '/safe_import(".keyboardkbdd", "KeyboardKbdd")/d' libqtile/widget/__init__.py
 			rm libqtile/widget/keyboardkbdd.py
 		)
 	fi
