@@ -5,12 +5,10 @@ EAPI=5-progress
 PYTHON_ABI_TYPE="multiple"
 PYTHON_RESTRICTED_ABIS="2.6 3.2 3.1 3.5 *-jython *-pypy-*"
 
-inherit distutils git-2
+inherit distutils
 
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/qtile/qtile.git"
-EGIT_BRANCH="develop"
-KEYWORDS=""
+SRC_URI="https://github.com/qtile/qtile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~*"
 
 DESCRIPTION="A pure-Python tiling window manager."
 HOMEPAGE="http://www.qtile.org/"
@@ -28,6 +26,7 @@ REQUIRED_USE="widget-mpris? ( dbus )
 RDEPEND="x11-libs/cairo[xcb] x11-libs/pango
 	>=dev-python/xcffib-0.3.0
 	>=dev-python/cairocffi-0.7
+	>=dev-python/cffi-1.0
 	python_abis_3.3? ( dev-python/asyncio )
 	python_abis_2.7? ( dev-python/trollius[python_targets_python2_7] )
 	$(python_abi_depend ">=dev-python/six-1.4.1" ">=dev-python/cffi-1.0" )
@@ -56,39 +55,39 @@ src_prepare() {
 	if ! use widget-google-calendar ; then
 		(
 			sed -i '/safe_import(".google_calendar", "GoogleCalendar")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/google_calendar.py
+			rm libqtile/widget/google_calendar.py*
 		)
 	fi
 	if ! use widget-imap ; then
 		(
 			sed -i '/safe_import(".imapwidget", "ImapWidget")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/imapwidget.py
+			rm libqtile/widget/imapwidget.py*
 		)
 	fi
 	if ! use widget-launchbar ; then
 		(
 			sed -i '/safe_import(".launchbar", "LaunchBar")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/launchbar.py
+			rm libqtile/widget/launchbar.py*
 		)
 	fi
 	if ! use widget-mpd ; then
 		(
 			sed -i '/safe_import(".mpdwidget", "Mpd")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/mpdwidget.py
+			rm libqtile/widget/mpdwidget.py*
 		)
 	fi
 	if ! use widget-wlan ; then
 		(
 			sed -i '/safe_import(".wlan", "Wlan")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/wlan.py
+			rm libqtile/widget/wlan.py*
 		)
 	fi
 	if ! use widget-mpris ; then
 		(
 			sed -i '/safe_import(".mpriswidget", "Mpris")/d' libqtile/widget/__init__.py
 			sed -i '/safe_import(".mpris2widget", "Mpris2")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/mpriswidget.py
-			rm libqtile/widget/mpris2widget.py
+			rm libqtile/widget/mpriswidget.py*
+			rm libqtile/widget/mpris2widget.py*
 		)
 	fi
 	if ! use widget-keyboardkbdd ; then
