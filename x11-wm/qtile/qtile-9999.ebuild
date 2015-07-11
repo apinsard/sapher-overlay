@@ -30,7 +30,7 @@ RDEPEND="x11-libs/cairo[xcb] x11-libs/pango
 	>=dev-python/cairocffi-0.7
 	python_abis_3.3? ( dev-python/asyncio )
 	python_abis_2.7? ( dev-python/trollius[python_targets_python2_7] )
-	$(python_abi_depend ">=dev-python/six-1.4.1" ">=dev-python/cffi-1.0" )
+	$(python_abi_depend ">=dev-python/six-1.4.1" ">=dev-python/cffi-1.1" )
 	dbus? ( $(python_abi_depend dev-python/dbus-python ">=dev-python/pygobject-3.4.2-r1000" ) )
 	widget-google-calendar? (
 		$(python_abi_depend dev-python/httplib2 dev-python/python-dateutil )

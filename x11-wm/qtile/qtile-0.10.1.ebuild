@@ -26,7 +26,7 @@ REQUIRED_USE="widget-mpris? ( dbus )
 RDEPEND="x11-libs/cairo[xcb] x11-libs/pango
 	>=dev-python/xcffib-0.3.0
 	>=dev-python/cairocffi-0.7
-	>=dev-python/cffi-1.0
+	>=dev-python/cffi-1.1
 	python_abis_3.3? ( dev-python/asyncio )
 	python_abis_2.7? ( dev-python/trollius[python_targets_python2_7] )
 	$(python_abi_depend ">=dev-python/six-1.4.1" ">=dev-python/cffi-1.0" )
@@ -106,4 +106,18 @@ src_install() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
+}
+
+pkg_postinst() {
+	ewarn "!!! Config breakage !!!"
+	ewarn "    - various deprecated commands have been removed:"
+	ewarn "        Screen.cmd_nextgroup: use cmd_next_group"
+	ewarn "        Screen.cmd_prevgroup: use cmd_prev_group"
+	ewarn "        Qtile.cmd_nextlayout: use cmd_next_layout"
+	ewarn "        Qtile.cmd_prevlayout: use cmd_prev_layout"
+	ewarn "        Qtile.cmd_to_next_screen: use cmd_next_screen"
+	ewarn "        Qtile.cmd_to_prev_screen: use cmd_prev_screen"
+	ewarn "    - Clock widget: remove fmt kwarg, use format kwarg"
+	ewarn "    - GmailChecker widget: remove settings parameter"
+	ewarn "    - Maildir widget: remove maildirPath, subFolders, and separator kwargs"
 }
