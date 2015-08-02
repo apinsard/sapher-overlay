@@ -31,10 +31,15 @@ src_prepare() {
 	python_convert_shebangs 3 chuse
 }
 
+src_compile() {
+	mkdir -p man
+	pod2man chuse.pod > man/chuse.1
+}
+
 src_install() {
 	into /usr/
 	dosbin chuse
-	doman man/man1/chuse.1
+	doman man/chuse.1
 	dodoc ChangeLog
 }
 
