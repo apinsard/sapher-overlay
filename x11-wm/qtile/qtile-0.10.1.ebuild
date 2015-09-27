@@ -1,11 +1,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5-progress
+EAPI=5
 
-PYTHON_ABI_TYPE="multiple"
-PYTHON_RESTRICTED_ABIS="2.6 3.2 3.1 3.5 *-jython *-pypy-*"
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit distutils
+inherit distutils-r1
 
 SRC_URI="https://github.com/qtile/qtile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~*"
@@ -19,27 +18,34 @@ IUSE="dbus widget-google-calendar widget-imap widget-launchbar widget-mpd widget
 
 REQUIRED_USE="widget-mpris? ( dbus )
 	widget-keyboardkbdd? ( dbus )
-	widget-google-calendar? ( python_abis_2.7 )
-	widget-wlan? ( python_abis_2.7 )
+	widget-google-calendar? ( python_targets_python2_7 )
+	widget-wlan? ( python_targets_python2_7 )
 "
 
 RDEPEND="x11-libs/cairo[xcb] x11-libs/pango
-	python_abis_3.3? ( dev-python/asyncio )
-	python_abis_2.7? ( dev-python/trollius[python_targets_python2_7] )
-	$(python_abi_depend ">=dev-python/six-1.4.1" ">=dev-python/xcffib-0.3.0" ">=dev-python/cairocffi-0.7" ">=dev-python/cffi-1.1")
-	dbus? ( $(python_abi_depend dev-python/dbus-python ">=dev-python/pygobject-3.4.2-r1000" ) )
-	widget-google-calendar? (
-		$(python_abi_depend dev-python/httplib2 dev-python/python-dateutil )
-		dev-python/oauth2client
-		dev-python/google-api-python-client
+	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' 'python3_3')
+	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
+	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-0.3.0[${PYTHON_USEDEP}]
+	>=dev-python/cairocffi-0.7[${PYTHON_USEDEP}]
+	>=dev-python/cffi-1.1[${PYTHON_USEDEP}]
+	dbus? (
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.4.2-r1000[${PYTHON_USEDEP}]
 	)
-	widget-imap? ( dev-python/keyring )
-	widget-launchbar? ( $(python_abi_depend dev-python/pyxdg ) )
-	widget-mpd? ( dev-python/python-mpd )
-	widget-wlan? ( net-wireless/python-wifi )
+	widget-google-calendar? (
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		dev-python/oauth2client[$PYTHON_USEDEP]
+		dev-python/google-api-python-client[python_targets_python2_7]
+	)
+	widget-imap? ( dev-python/keyring[${PYTHON_USEDEP}] )
+	widget-launchbar? ( dev-python/pyxdg[${PYTHON_USEDEP}] )
+	widget-mpd? ( dev-python/python-mpd[${PYTHON_USEDEP}] )
+	widget-wlan? ( net-wireless/python-wifi[python_targets_python2_7] )
 "
 DEPEND="${RDEPEND}
-	$(python_abi_depend dev-python/setuptools )
+	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DOCS=( CHANGELOG README.rst )
 
@@ -95,8 +101,8 @@ src_prepare() {
 	fi
 }
 
-src_install() {
-	distutils_src_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	insinto /usr/share/xsessions
 	doins resources/qtile.desktop
