@@ -1,10 +1,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5-progress"
+EAPI="5"
 
-PYTHON_ABI_TYPE="single"
-PYTHON_RESTRICTED_ABIS="2.*"
-inherit multilib python
+PYTHON_COMPAT=( python3_{3..5} )
+
+inherit multilib python-single-r1
 
 DESCRIPTION="Simple tool to manage your package.use keeping track and comments on changes made."
 HOMEPAGE="https://github.com/apinsard/chuse"
@@ -28,7 +28,7 @@ src_unpack() {
 
 src_prepare() {
 	einfo "Converting shebangs for python3..."
-	python_convert_shebangs 3 chuse
+	python_fix_shebang chuse
 }
 
 src_compile() {

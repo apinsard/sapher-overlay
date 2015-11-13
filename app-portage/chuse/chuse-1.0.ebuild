@@ -1,10 +1,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4-python"
+EAPI="5"
 
-PYTHON_MULTIPLE_ABIS="1"
-PYTHON_RESTRICTED_ABIS="2.*"
-inherit multilib python
+PYTHON_COMPAT=( python3_{3..5} )
+
+inherit multilib python-single-r1
 
 DESCRIPTION="Simple tool to manage your package.use keeping track and comments on changes made."
 HOMEPAGE="https://github.com/apinsard/chuse"
