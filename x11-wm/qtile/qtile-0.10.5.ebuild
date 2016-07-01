@@ -2,7 +2,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -14,30 +14,27 @@ HOMEPAGE="http://www.qtile.org/"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="dbus widget-google-calendar widget-imap widget-launchbar widget-mpd widget-mpris widget-wlan widget-keyboardkbdd"
+IUSE="dbus widget-khal-calendar widget-imap widget-launchbar widget-mpd widget-mpris widget-wlan widget-keyboardkbdd"
 
 REQUIRED_USE="widget-mpris? ( dbus )
 	widget-keyboardkbdd? ( dbus )
-	widget-google-calendar? ( python_targets_python2_7 )
 	widget-wlan? ( python_targets_python2_7 )
 "
 
-RDEPEND="x11-libs/cairo[xcb] x11-libs/pango
+RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' 'python3_3')
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/xcffib-0.3.0[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/cairocffi-0.7[${PYTHON_USEDEP}]
-	>=dev-python/cffi-1.1[${PYTHON_USEDEP}]
+	>=dev-python/cffi-1.3[${PYTHON_USEDEP}]
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3.4.2-r1000[${PYTHON_USEDEP}]
 	)
-	widget-google-calendar? (
+	widget-khal-calendar? (
 		dev-python/httplib2[${PYTHON_USEDEP}]
 		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/oauth2client[$PYTHON_USEDEP]
-		dev-python/google-api-python-client[python_targets_python2_7]
 	)
 	widget-imap? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	widget-launchbar? ( dev-python/pyxdg[${PYTHON_USEDEP}] )
@@ -55,10 +52,10 @@ src_prepare() {
 			sed -i '/self.setup_python_dbus()/d' libqtile/manager.py
 		)
 	fi
-	if ! use widget-google-calendar ; then
+	if ! use widget-khal-calendar ; then
 		(
-			sed -i '/safe_import(".google_calendar", "GoogleCalendar")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/google_calendar.py*
+			sed -i '/safe_import(".khal_calendar", "KhalCalendar")/d' libqtile/widget/__init__.py
+			rm libqtile/widget/khal_calendar.py*
 		)
 	fi
 	if ! use widget-imap ; then
@@ -112,8 +109,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	ewarn "!!! Config breakage !!!"
-	ewarn "    - layouts.VerticalTile 'windows' is now 'clients'"
-	ewarn "    - layouts.VerticalTile focus_next/focus_previous now take a single"
-	ewarn "      argument, similar to other layouts"
+	ewarn "!!! GoogleCalendar widget dropped for KhalCalendar widget !!!"
+	ewarn "!!! qtile-session script removed in favor of qtile script !!!"
 }
