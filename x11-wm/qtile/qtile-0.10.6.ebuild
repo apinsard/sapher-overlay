@@ -4,12 +4,10 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit distutils-r1 git-2
+inherit distutils-r1
 
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/qtile/qtile.git"
-EGIT_BRANCH="develop"
-KEYWORDS=""
+SRC_URI="https://github.com/qtile/qtile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~*"
 
 DESCRIPTION="A pure-Python tiling window manager."
 HOMEPAGE="http://www.qtile.org/"
@@ -23,7 +21,7 @@ REQUIRED_USE="widget-mpris? ( dbus )
 	widget-wlan? ( python_targets_python2_7 )
 "
 
-RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USEDEP}
+RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/asyncio[${PYTHON_USEDEP}]' 'python3_3')
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
@@ -57,39 +55,39 @@ src_prepare() {
 	if ! use widget-khal-calendar ; then
 		(
 			sed -i '/safe_import(".khal_calendar", "KhalCalendar")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/khal_calendar.py
+			rm libqtile/widget/khal_calendar.py*
 		)
 	fi
 	if ! use widget-imap ; then
 		(
 			sed -i '/safe_import(".imapwidget", "ImapWidget")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/imapwidget.py
+			rm libqtile/widget/imapwidget.py*
 		)
 	fi
 	if ! use widget-launchbar ; then
 		(
 			sed -i '/safe_import(".launchbar", "LaunchBar")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/launchbar.py
+			rm libqtile/widget/launchbar.py*
 		)
 	fi
 	if ! use widget-mpd ; then
 		(
 			sed -i '/safe_import(".mpdwidget", "Mpd")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/mpdwidget.py
+			rm libqtile/widget/mpdwidget.py*
 		)
 	fi
 	if ! use widget-wlan ; then
 		(
 			sed -i '/safe_import(".wlan", "Wlan")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/wlan.py
+			rm libqtile/widget/wlan.py*
 		)
 	fi
 	if ! use widget-mpris ; then
 		(
 			sed -i '/safe_import(".mpriswidget", "Mpris")/d' libqtile/widget/__init__.py
 			sed -i '/safe_import(".mpris2widget", "Mpris2")/d' libqtile/widget/__init__.py
-			rm libqtile/widget/mpriswidget.py
-			rm libqtile/widget/mpris2widget.py
+			rm libqtile/widget/mpriswidget.py*
+			rm libqtile/widget/mpris2widget.py*
 		)
 	fi
 	if ! use widget-keyboardkbdd ; then
@@ -108,4 +106,11 @@ python_install_all() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
+}
+
+pkg_postinst() {
+	ewarn "!!! GoogleCalendar widget dropped for KhalCalendar widget !!!"
+	ewarn "!!! qtile-session script removed in favor of qtile script !!!"
+	ewarn "!!! qsh renamed to qshell !!!"
+	ewarn "    This avoids name collision with other packages"
 }
