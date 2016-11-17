@@ -18,7 +18,6 @@ IUSE="dbus widget-khal-calendar widget-imap widget-launchbar widget-mpd widget-m
 
 REQUIRED_USE="widget-mpris? ( dbus )
 	widget-keyboardkbdd? ( dbus )
-	widget-wlan? ( python_targets_python2_7 )
 "
 
 RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USEDEP}]
@@ -38,7 +37,12 @@ RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USE
 	widget-imap? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	widget-launchbar? ( dev-python/pyxdg[${PYTHON_USEDEP}] )
 	widget-mpd? ( dev-python/python-mpd[${PYTHON_USEDEP}] )
-	widget-wlan? ( net-wireless/python-wifi[python_targets_python2_7] )
+	widget-wlan? (
+		|| (
+			net-wireless/python-wifi[${PYTHON_USEDEP}]
+			dev-python/iwlib[${PYTHON_USEDEP}]
+		)
+	)
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
