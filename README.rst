@@ -6,10 +6,12 @@ This overlay contains:
 - ebuilds for miscellaneous software I created
    - `chuse <https://github.com/apinsard/sapher-overlay/tree/master/app-portage/chuse>`_
 - ebuilds I maintain for Funtoo
+   - `chuse <https://github.com/apinsard/sapher-overlay/tree/master/app-portage/chuse>`_
+   - `iwlib <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/iwlib>`_
    - `qtile <https://github.com/apinsard/sapher-overlay/tree/master/x11-wm/qtile>`_
+- and ebuilds I added for fun
+   - `git-blame-someone-else <https://github.com/apinsard/sapher-overlay/tree/master/dev-vcs/git-blame-someone-else>`_
 
-To use this overlay, the best way is to add it to layman. If you don't know
-layman, installation steps are described below.
 
 ===========================
 Installation through layman
@@ -58,6 +60,5 @@ Greetings GitHub Users!
 To contribute bug reports for this overlay, you can open up a GitHub issue or send
 me a pull request.
 
-If you are using ebuilds in this overlay as part of Funtoo Linux (because they are
-merged into the main Funtoo Linux Portage tree, for example,) then
-please also open an issue at `bugs.funtoo.org`_.
+If you are using ebuilds in this overlay as part of Funtoo Linux,
+please also file a new issue at `bugs.funtoo.org`_.
