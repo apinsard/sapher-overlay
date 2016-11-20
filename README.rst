@@ -14,6 +14,22 @@ This overlay contains:
 
 
 ===========================
+Installation via repos.conf
+===========================
+
+.. code::
+
+  mkdir -p /var/overlays
+  git clone https://github.com/apinsard/sapher-overlay.git /var/overlays/sapher
+  cat > /etc/portage/repos.conf/sapher <<EOF
+  [sapher]
+  location = /var/overlays/sapher
+  sync-type = git
+  sync-uri = git://github.com/apinsard/sapher-overlay.git
+  auto-sync = yes
+
+
+===========================
 Installation through layman
 ===========================
 
@@ -28,7 +44,7 @@ Installation through layman
     <repo priority="50" quality="experimental" status="unoffical">
       <name>sapher</name>
       <description>Pytony's Sapher overlay</description>
-      <homepage>http://github.com/apinsard/sapher-overlay</homepage>
+      <homepage>https://github.com/apinsard/sapher-overlay</homepage>
       <owner>
         <email>antoine.pinsard@gmail.com</email>
         <name>Antoine Pinsard</name>
