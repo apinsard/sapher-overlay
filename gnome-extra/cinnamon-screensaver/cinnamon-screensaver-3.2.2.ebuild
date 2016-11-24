@@ -45,6 +45,7 @@ RDEPEND="
 	!~gnome-extra/cinnamon-1.8.8.1
 	!systemd? ( sys-auth/consolekit )
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	x11-libs/xapps
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.35
@@ -55,7 +56,6 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/randrproto
 	x11-proto/scrnsaverproto
 	x11-proto/xf86miscproto
-	x11-libs/xapps
 	doc? (
 		app-text/xmlto
 		app-text/docbook-xml-dtd:4.1.2
