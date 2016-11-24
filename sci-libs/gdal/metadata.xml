@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sci-geosciences@gentoo.org</email>
-		<name>Gentoo Geosciences Project</name>
+	<herd>funtoo</herd>
+	<maintainer>
+		<email>antoine.pinsard@gmail.com</email>
+		<name>Antoine Pinsard</name>
 	</maintainer>
 	<longdescription>
 		GDAL is the Geospatial Data Abstraction Library, a set of tools for
@@ -13,6 +14,9 @@
 	<slots>
 		<subslots>Reflects ABI compatibility of libgdal.so</subslots>
 	</slots>
+	<upstream>
+		<bugs-to>http://trac.osgeo.org/gdal/report/</bugs-to>
+	</upstream>
 	<use>
 		<flag name="armadillo">Use <pkg>sci-libs/armadillo</pkg> for faster TPS transform computation</flag>
 		<flag name="aux_xml">Enable Portable Auxilliary Metadata generation</flag>

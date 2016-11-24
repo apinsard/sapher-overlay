@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>funtoo</herd>
+	<maintainer>
+		<email>antoine.pinsard@gmail.com</email>
+		<name>Antoine Pinsard</name>
+	</maintainer>
+	<longdescription>
+		This project gathers the components which are common to multiple desktop environments and
+		required to implement cross-DE solutions.
+	</longdescription>
+	<upstream>
+    <changelog>https://raw.githubusercontent.com/linuxmint/xapps/master/ChangeLog</changelog>
+    <bugs-to>https://github.com/linuxmint/xapps/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
