@@ -23,5 +23,6 @@ gnome-base/libgnomekbd
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	rm -rf files/usr/bin
 	eautoreconf
 }
