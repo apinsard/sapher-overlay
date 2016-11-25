@@ -1,0 +1,38 @@
+diff --git a/tmp/a/crypt-gpgme.c b/tmp/b/crypt-gpgme.c
+index 24548bf..4a2a6ba 100644
+--- a/tmp/a/crypt-gpgme.c
++++ b/tmp/b/crypt-gpgme.c
+@@ -4954,7 +4954,7 @@ int smime_gpgme_verify_sender (HEADER *h)
+   return verify_sender (h, GPGME_PROTOCOL_CMS);
+ }
+ 
+-void gpgme_set_sender (const char *sender)
++void mutt_gpgme_set_sender (const char *sender)
+ {
+   mutt_error ("[setting sender] mailbox: %s\n", sender);
+   FREE (&current_sender);
+diff --git a/tmp/a/crypt-gpgme.h b/tmp/b/crypt-gpgme.h
+index 11ca6a6..7f5ecda 100644
+--- a/tmp/a/crypt-gpgme.h
++++ b/tmp/b/crypt-gpgme.h
+@@ -53,6 +53,6 @@ int smime_gpgme_send_menu (HEADER *msg, int *redraw);
+ 
+ int smime_gpgme_verify_sender (HEADER *h);
+ 
+-void gpgme_set_sender (const char *sender);
++void mutt_gpgme_set_sender (const char *sender);
+ 
+ #endif
+diff --git a/tmp/a/crypt-mod-pgp-gpgme.c b/tmp/b/crypt-mod-pgp-gpgme.c
+index 948585c..183f4ee 100644
+--- a/tmp/a/crypt-mod-pgp-gpgme.c
++++ b/tmp/b/crypt-mod-pgp-gpgme.c
+@@ -104,7 +104,7 @@ static BODY *crypt_mod_pgp_make_key_attachment (char *tempf)
+ 
+ static void crypt_mod_pgp_set_sender (const char *sender)
+ {
+-  gpgme_set_sender (sender);
++  mutt_gpgme_set_sender (sender);
+ }
+ 
+ struct crypt_module_specs crypt_mod_pgp_gpgme =
