@@ -129,6 +129,10 @@ src_prepare() {
 	sed -i -e 's/"Mutt %s (%s)"/"Mutt %s (%s, Gentoo '"${PVR}${upatches}"')"/' \
 		muttlib.c || die "failed patching in Gentoo version"
 
+	# Fix gpgme_set_sender name conflict with =app-crypt/gpgme-1.8.0
+	sed -i -e 's/gpgme_set_sender/mutt_gpgme_set_sender/' \
+		crypt-gpgme.{c,h} crypt-mod-pgp-gpgme.c || die "{,mutt_}gpgme_set_sender renaming failed"
+
 	# many patches touch the buildsystem, we always need this
 	AT_M4DIR="m4" eautoreconf
 
