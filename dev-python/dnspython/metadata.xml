@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
+	<herd>funtoo</herd>
+	<maintainer>
+		<email>antoine.pinsard@gmail.com</email>
+		<name>Antoine Pinsard</name>
 	</maintainer>
 	<longdescription>
 dnspython is a DNS toolkit for Python. It supports almost all of the record
