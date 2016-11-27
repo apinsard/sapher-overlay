@@ -22,7 +22,7 @@ REQUIRED_USE="widget-mpris? ( dbus )
 	widget-keyboardkbdd? ( dbus )
 "
 
-RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USEDEP}
+RDEPEND="x11-libs/cairo[xcb] x11-libs/pango dev-python/setproctitle[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
 	>=dev-python/xcffib-0.4.0[${PYTHON_USEDEP}]
