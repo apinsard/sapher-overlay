@@ -27,6 +27,7 @@ Installation via repos.conf
   sync-type = git
   sync-uri = git://github.com/apinsard/sapher-overlay.git
   auto-sync = yes
+  EOF
 
 
 ===========================
