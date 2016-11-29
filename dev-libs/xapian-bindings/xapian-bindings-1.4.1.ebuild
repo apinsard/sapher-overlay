@@ -1,12 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 python3_{4..5} )
 PYTHON_REQ_USE=threads
-DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
 DISTUTILS_IN_SOURCE_BUILD=yesplz
 
@@ -18,7 +15,7 @@ PHP_EXT_OPTIONAL_USE="php"
 
 #mono violates sandbox, we disable it until we figure this out
 #inherit distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
-inherit distutils-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs
+inherit distutils-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs python-utils-r1
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -66,6 +63,16 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.3.6-allow-ruby-2.0.patch
 }
 
+python_configure() {
+	if python_is_python3; then
+		export PYTHON3=$PYTHON
+		export with_python3=with
+	else
+		export PYTHON2=$PYTHON
+		export with_python2=with
+	fi
+}
+
 src_configure() {
 	if use java; then
 		export CXXFLAGS="${CXXFLAGS} $(java-pkg_get-jni-cflags)"
@@ -80,16 +87,12 @@ src_configure() {
 		export LUA_LIB="$($(tc-getPKG_CONFIG) --variable=INSTALL_CMOD lua)"
 	fi
 
+	with_python2=without
+	with_python3=without
 	if use python; then
-		export PYTHON2=/usr/bin/python2
-		export PYTHON3=/usr/bin/python3
+		python_foreach_impl python_configure
 	fi
-
-	if use python_targets_python3_4 || use python_targets_python3_5; then
-		python3_with=--with-python3
-	else
-		python3_with=--without-python3
-	fi
+	with_python="--${with_python2}-python --${with_python3}-python3"
 
 	econf \
 		--disable-documentation \
@@ -98,8 +101,7 @@ src_configure() {
 		--without-csharp \
 		$(use_with perl) \
 		$(use_with php) \
-		$(use_with python_targets_python2_7 python) \
-		$python3_with \
+		$with_python \
 		$(use_with ruby) \
 		$(use_with tcl)
 #		$(use_with mono csharp)
