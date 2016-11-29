@@ -50,7 +50,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 pkg_setup() {
 #	use mono && mono-env_pkg_setup
 	use java && java-pkg-opt-2_pkg_setup
-	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -61,6 +60,9 @@ src_prepare() {
 
 	# Accept ruby 2.0 - patch configure directly to avoid autoreconf
 	epatch "${FILESDIR}"/${PN}-1.3.6-allow-ruby-2.0.patch
+
+	# Prevent sphinx-build to write python cache files where it might not have permisions
+	sed -i 's/\$(SPHINX_BUILD)/-B $(SPHINX_BUILD)/' python{,3}/Makefile.in
 }
 
 python_configure() {
@@ -95,7 +97,7 @@ src_configure() {
 	with_python="--${with_python2}-python --${with_python3}-python3"
 
 	econf \
-		--disable-documentation \
+		--enable-documentation=no \
 		$(use_with java) \
 		$(use_with lua) \
 		--without-csharp \
