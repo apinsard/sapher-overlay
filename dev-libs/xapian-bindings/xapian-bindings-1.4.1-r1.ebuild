@@ -4,8 +4,6 @@ EAPI="5"
 
 PYTHON_COMPAT=( python2_7 python3_{4..5} )
 PYTHON_REQ_USE=threads
-DISTUTILS_OPTIONAL=yesplz
-DISTUTILS_IN_SOURCE_BUILD=yesplz
 
 USE_PHP="php5-5 php5-6"
 
@@ -15,7 +13,7 @@ PHP_EXT_OPTIONAL_USE="php"
 
 #mono violates sandbox, we disable it until we figure this out
 #inherit distutils-r1 libtool java-pkg-opt-2 mono-env php-ext-source-r2 toolchain-funcs
-inherit distutils-r1 libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs python-utils-r1
+inherit libtool java-pkg-opt-2 php-ext-source-r2 toolchain-funcs python-r1
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="http://www.xapian.org/"
@@ -65,16 +63,6 @@ src_prepare() {
 	sed -i 's/\$(SPHINX_BUILD)/-B $(SPHINX_BUILD)/' python{,3}/Makefile.in
 }
 
-python_configure() {
-	if python_is_python3; then
-		export PYTHON3=$PYTHON
-		export with_python3=with
-	else
-		export PYTHON2=$PYTHON
-		export with_python2=with
-	fi
-}
-
 src_configure() {
 	if use java; then
 		export CXXFLAGS="${CXXFLAGS} $(java-pkg_get-jni-cflags)"
@@ -89,15 +77,25 @@ src_configure() {
 		export LUA_LIB="$($(tc-getPKG_CONFIG) --variable=INSTALL_CMOD lua)"
 	fi
 
-	with_python2=without
-	with_python3=without
+	local -x with_python2=without
+	local -x with_python3=without
+
+	check_python() {
+		if [[ ${EPYTHON} == python3* ]]; then
+			with_python3=with
+		elif [[ ${EPYTHON} == python2* ]]; then
+			with_python2=with
+		fi
+	}
+
 	if use python; then
-		python_foreach_impl python_configure
+		python_foreach_impl check_python
 	fi
+
 	with_python="--${with_python2}-python --${with_python3}-python3"
 
 	econf \
-		--enable-documentation=no \
+		--disable-documentation \
 		$(use_with java) \
 		$(use_with lua) \
 		--without-csharp \
