@@ -59,8 +59,10 @@ src_prepare() {
 	# Accept ruby 2.0 - patch configure directly to avoid autoreconf
 	epatch "${FILESDIR}"/${PN}-1.3.6-allow-ruby-2.0.patch
 
-	# Prevent sphinx-build to write python cache files where it might not have permisions
-	sed -i 's/\$(SPHINX_BUILD)/-B $(SPHINX_BUILD)/' python{,3}/Makefile.in
+	if has_version '=dev-python/sphinx-1.4*'; then
+		# Prevent sphinx-build to write python cache files where it might not have permisions
+		sed -i 's/\$(SPHINX_BUILD)/-B $(SPHINX_BUILD)/' python{,3}/Makefile.in
+	fi
 }
 
 src_configure() {
