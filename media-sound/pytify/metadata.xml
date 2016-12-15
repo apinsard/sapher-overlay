@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<herd>funtoo</herd>
+	<maintainer>
+		<email>antoine.pinsard@gmail.com</email>
+		<name>Antoine Pinsard</name>
+	</maintainer>
+	<longdescription>
+		Search and start songs from the CLI.
+		Spotify must be running in the background in order to use this cli remote.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/bjarneo/Pytify/releases</changelog>
+    <bugs-to>https://github.com/bjarneo/Pytify/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
