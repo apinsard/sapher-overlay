@@ -1,3 +1,0 @@
-# This modifies the python path to isolate globaly pip installed packages from
-# portage installed packages.
-/usr/share/pip/lib64/$EPYTHON/site-packages
