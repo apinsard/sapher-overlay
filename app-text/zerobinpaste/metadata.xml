@@ -7,7 +7,7 @@
 		<name>Antoine Pinsard</name>
 	</maintainer>
 	<longdescription>
-		A client side encrypted pastebin"
+		Paste content of files or stdin to a 0bin site.
 	</longdescription>
 	<upstream>
 		<changelog>https://github.com/sametmax/0bin/releases</changelog>
