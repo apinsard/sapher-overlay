@@ -9,6 +9,7 @@ This overlay contains:
    - `chuse <https://github.com/apinsard/sapher-overlay/tree/master/app-portage/chuse>`_
    - `iwlib <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/iwlib>`_
    - `qtile <https://github.com/apinsard/sapher-overlay/tree/master/x11-wm/qtile>`_
+   - `pytify <https://github.com/apinsard/sapher-overlay/tree/master/media-sound/pytify>`_
 - and ebuilds I added for fun
    - `git-blame-someone-else <https://github.com/apinsard/sapher-overlay/tree/master/dev-vcs/git-blame-someone-else>`_
 
