@@ -34,13 +34,13 @@ src_install() {
 
 	# Create /usr/bin/brave-bin
 	dodir /usr/bin/
-	cat <<-EOF >"${ED}"usr/bin/${PN}
+	cat <<-EOF >"${ED}usr/bin/${PN}"
 	#!/bin/sh
 	unset LD_PRELOAD
 	LD_LIBRARY_PATH="${BRAVE_HOME}/"
 	exec ${BRAVE_HOME}/${BRAVE_PN} "\$@"
 	EOF
-	fperms 0755 /usr/bin/${PN}
+	chmod 0755 "${ED}usr/bin/${PN}"
 
 	# revdep-rebuild entry
 	insinto /etc/revdep-rebuild
