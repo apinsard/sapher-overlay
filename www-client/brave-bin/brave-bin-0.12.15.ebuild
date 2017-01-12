@@ -17,7 +17,9 @@ RESTRICT="strip mirror"
 IUSE=""
 
 RDEPEND="gnome-base/libgnome-keyring"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	gnome-base/gconf
+"
 
 S="${WORKDIR}/Brave-linux-x64"
 
