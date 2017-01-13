@@ -13,7 +13,7 @@ DESCRIPTION="Another Portage Python Interface"
 HOMEPAGE="https://github.com/apinsard/appi/"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/0.0"
 IUSE=""
 
 REQUIRED_USE=""
