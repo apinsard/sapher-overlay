@@ -4,8 +4,10 @@ Sapher Overlay
 This overlay contains:
 
 - ebuilds for miscellaneous software I created
+   - `appi <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/appi>`_
    - `chuse <https://github.com/apinsard/sapher-overlay/tree/master/app-portage/chuse>`_
 - ebuilds I maintain for Funtoo
+   - `appi <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/appi>`_
    - `chuse <https://github.com/apinsard/sapher-overlay/tree/master/app-portage/chuse>`_
    - `iwlib <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/iwlib>`_
    - `qtile <https://github.com/apinsard/sapher-overlay/tree/master/x11-wm/qtile>`_
