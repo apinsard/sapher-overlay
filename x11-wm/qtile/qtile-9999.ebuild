@@ -1,13 +1,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils-r1 git-2
+inherit distutils-r1 git-r3
 
 SRC_URI=""
-EGIT_REPO_URI="https://github.com/qtile/qtile.git"
+EGIT_REPO_URI="git://github.com/qtile/qtile.git"
 EGIT_BRANCH="develop"
 KEYWORDS=""
 
@@ -101,6 +101,7 @@ src_prepare() {
 			rm libqtile/widget/keyboardkbdd.py
 		)
 	fi
+	default
 }
 
 python_install_all() {
