@@ -12,6 +12,7 @@ This overlay contains:
    - `iwlib <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/iwlib>`_
    - `qtile <https://github.com/apinsard/sapher-overlay/tree/master/x11-wm/qtile>`_
    - `pytify <https://github.com/apinsard/sapher-overlay/tree/master/media-sound/pytify>`_
+   - `python-sipsimple <https://github.com/apinsard/sapher-overlay/tree/master/dev-python/python-sipsimple>`_
 - and ebuilds I added for fun
    - `git-blame-someone-else <https://github.com/apinsard/sapher-overlay/tree/master/dev-vcs/git-blame-someone-else>`_
 
