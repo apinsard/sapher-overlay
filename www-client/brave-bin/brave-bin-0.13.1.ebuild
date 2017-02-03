@@ -16,7 +16,10 @@ RESTRICT="strip mirror"
 
 IUSE=""
 
-RDEPEND="gnome-base/libgnome-keyring"
+RDEPEND="
+	gnome-base/libgnome-keyring
+	x11-libs/libXScrnSaver
+"
 DEPEND="${RDEPEND}
 	gnome-base/gconf
 "
